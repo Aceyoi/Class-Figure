@@ -1,10 +1,11 @@
 ﻿// Код создан Сапожниковым Ю.С.
 // Используемые библиотеки
 
-#include <iostream>
-#include <cassert>
-#include <fstream> // Добавлено для работы с файлами
-#include "figureModul.h"
+
+
+#include "figure.Class.h"
+#include "figure.Modul.h"
+#include "figure.Test.h"
 
 using namespace std;
 
@@ -22,16 +23,18 @@ int main() {
     cout << "Укажите высоту: ";
     cin >> h; // высота
 
-    // Создаем экземпляр класса
-    Rectangle* figure = new Rectangle();
+    //// Создаем экземпляр класса
+    //Rectangle* figure = new Rectangle();
+    //figure->setFigL(l);// Добавляем длину
+    //figure->setFigW(w);// Добавляем ширину
+    //figure->setFigH(h);// Добавляем высоту
 
-    figure->setFigL(l);// Добавляем длину
-    figure->setFigW(w);// Добавляем ширину
-    figure->setFigH(h);// Добавляем высоту
+    //конструктор с  параметрами длины, ширины, высоты
+    Rectangle<float> figure(l, w, h);
 
-    printclass(figure); // Передаем объект в функцию вывода
-    VText(figure); // Передаем объект в функцию вывода в файл
+    figure.printclass();
+    //print(figure); // Передаем объект в функцию вывода
+    //VText(figure); // Передаем объект в функцию вывода в файл
 
-    delete figure; // Очистка памяти
     return 0; // Завершение программы
 }
