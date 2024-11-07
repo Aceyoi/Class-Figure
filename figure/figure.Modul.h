@@ -10,34 +10,51 @@ using namespace std;
 
 // Вывод на экран
 template <typename T>
-void print(T*  fig) {
-    if (fig->height == 0) {  // проверка высоты
+void Print(T*  figure) {
+    if (figure->Getheight() == 0) {  // проверка высоты
         cout << endl << "У прямоугольника найден" << endl;
-        cout << "Периметр равный: " << fig->GetTwod_Perimeter() << endl;
-        cout << "Площадь равная: " << fig->GetTwod_Area() << endl;
+        cout << "Периметр равный: " << figure->GetTwod_Perimeter() << endl;
+        cout << "Площадь равная: " << figure->GetTwod_Area() << endl;
     }
     else {
         cout << endl << "У параллелепипеда найден" << endl;
-        cout << "Периметр равный: " << fig->GetTreed_Perimeter() << endl;
-        cout << "Объем равынй: " << fig->GetTreed_Volume() << endl;
+        cout << "Периметр равный: " << figure->GetTreed_Perimeter() << endl;
+        cout << "Объем равынй: " << figure->GetTreed_Volume() << endl;
     }
 }
 
-// Вывод в файл
+// Записи ответа в файл
 template <typename T>
-void VText(T* fig) {
+void SaveFileSolution(T* figure) {
     ofstream out;  // поток для записи
-    out.open("Text.txt"); // Открываем файл для записи
+    out.open("Text-Solution.txt"); // Открываем файл для записи
     if (!out.is_open()) {
         throw runtime_error("Ошибка открытия файла");
     }
-        if (fig->height == 0) {  // проверка высоты
-            out << fig->GetTwod_Perimeter() << " " << fig->GetTwod_Area() << endl;
+        if (figure->Getheight() == 0) {  // проверка высоты
+            out << figure->GetTwod_Perimeter() << " " << figure->GetTwod_Area() << endl;
         }
         else {
-            out << fig->GetTreed_Perimeter() << " " << fig->GetTreed_Volume() << endl;
+            out << figure->GetTreed_Perimeter() << " " << figure->GetTreed_Volume() << endl;
         }
     out.close();
     cout << endl << "Файл был записан" << endl;
 }
 
+// Записи элементов класса в файл
+template <typename T>
+void SaveFileElements(T* figure) {
+    ofstream out;  // поток для записи
+    out.open("Text-Elements.txt"); // Открываем файл для записи
+    if (!out.is_open()) {
+        throw runtime_error("Ошибка открытия файла");
+    }
+    if (figure->Getheight() == 0) {  // проверка высоты
+        out << figure->Getwidth() << " " << figure->Getlength() << endl;
+    }
+    else {
+        out << figure->Getwidth() << " " << figure->Getlength() << " " << figure->Getheight() << endl;
+    }
+    out.close();
+    cout << endl << "Файл был записан" << endl;
+}

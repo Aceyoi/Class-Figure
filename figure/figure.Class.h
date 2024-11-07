@@ -2,23 +2,23 @@
 
 #pragma once
 
-#include "figure.Modul.h"
+#include "figure.Modul.h" 
 
 // Имя класса Прямоугольник
 template <typename T>
-class Rectangle {
-public:
+class RectangleOrParallelepiped {
+private:
     float width,  // ширина
-          height, // высота
+          height, // высота                   
           length; // длина
 
 public:
 
     //Конструктор без параметров
-    Rectangle() : length(0), width(0), height(0)  {}
+    RectangleOrParallelepiped() : length(0), width(0), height(0)  {}
 
     // Конструктор с параметрами
-    Rectangle(float l, float w, float h) {
+    RectangleOrParallelepiped(float l, float w, float h) {
         setFigL(l);
         setFigW(w);
         setFigH(h);
@@ -27,22 +27,22 @@ public:
     // Абстрактные типы данных
     // Виртуальные функции  
     // Деструктор
-    virtual ~Rectangle() {}
+    virtual ~RectangleOrParallelepiped() {}
 
     // Конструктор копирования
-    Rectangle(const Rectangle& other)
+    RectangleOrParallelepiped(const RectangleOrParallelepiped& other)
         : width(other.width), height(other.height), length(other.length) {}
 
     // Конструктор перемещения
-    Rectangle(Rectangle&& other) noexcept
+    RectangleOrParallelepiped(RectangleOrParallelepiped&& other) noexcept
         : width(other.width), height(other.height), length(other.length) {
         other.width = 0;
         other.height = 0;
         other.length = 0;
     }
 
-
-    void setFigW(float w) { // Устанавливаем ширину
+    // Метод заполнения ширины
+    void setFigW(float w) {
         if (w > 0) {
             width = w;
         }
@@ -51,7 +51,8 @@ public:
         }
     }
 
-    void setFigH(float h) { // Устанавливаем высоту
+    // Метод заполнения высоты
+    void setFigH(float h) { 
         if (h >= 0) {
             height = h;
         }
@@ -60,7 +61,8 @@ public:
         }
     }
 
-    void setFigL(float l) { // Устанавливаем длину
+    // Метод заполнения длины
+    void setFigL(float l) { 
         if (l > 0) {
             length = l;
         }
@@ -69,27 +71,53 @@ public:
         }
     }
 
-    // Находим периметр прямоугольника
+    // Метод вывода ширины
+    float Getwidth() const {
+        return width;
+    }
+
+    // Метод вывода высоты
+    float Getheight() const {
+        return height;
+    }
+
+    // Метод вывода длины
+    float Getlength() const {
+        return length;
+    }
+
+    // Метод нахождения периметра прямоугольника
     float GetTwod_Perimeter() const { // const - объект не изменяется
         return (length + width) * 2;
     }
 
-    // Находим площадь прямоугольника
+    // Метод нахождения площади прямоугольника
     float GetTwod_Area() const {
         return length * width;
     }
 
-    // Находим площадь параллелепипеда 
+    // Метод нахождения площади параллелепипеда 
     float GetTreed_Perimeter() const {
         return 4 * (length + width + height);
     }
 
-    // Находим объём параллелепипеда
+    // Метод нахождения объёма параллелепипеда
     float GetTreed_Volume() const {
         return width * length * height;
     }
 
+    // Метод вывода ответа на экран
     void printclass() {
-        print(Rectangle);
+        Print(this);
+    }
+
+    // Метод записи ответа в файл
+    void SaveFileSolutionClass() {
+        SaveFileSolution(this);
+    }
+
+    // Метод записи элементов класса в файл
+    void SaveFileElementsClass() {
+        SaveFileElements(this);
     }
 };

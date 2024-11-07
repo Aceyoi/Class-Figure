@@ -29,10 +29,12 @@ int main() {
     //figure->setFigW(w);// Добавляем ширину
     //figure->setFigH(h);// Добавляем высоту
 
-    //конструктор с  параметрами длины, ширины, высоты
-    Rectangle<float> figure(l, w, h);
+    
+    RectangleOrParallelepiped<float> figure(l, w, h); //конструктор с  параметрами длины, ширины, высоты
 
     figure.printclass();
+    figure.SaveFileSolutionClass();
+    figure.SaveFileElementsClass();
     //print(figure); // Передаем объект в функцию вывода
     //VText(figure); // Передаем объект в функцию вывода в файл
 
