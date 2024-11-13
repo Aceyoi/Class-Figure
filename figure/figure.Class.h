@@ -8,9 +8,9 @@
 template <typename T>
 class RectangleOrParallelepiped {
 private:
-    float width,  // ширина
-          height, // высота                   
-          length; // длина
+    double  width,  // ширина
+            height, // высота                   
+            length; // длина
 
 public:
 
@@ -18,7 +18,7 @@ public:
     RectangleOrParallelepiped() : length(0), width(0), height(0)  {}
 
     // Конструктор с параметрами
-    RectangleOrParallelepiped(float l, float w, float h) {
+    RectangleOrParallelepiped(double  l, double  w, double  h) {
         setFigL(l);
         setFigW(w);
         setFigH(h);
@@ -42,7 +42,7 @@ public:
     }
 
     // Метод заполнения ширины
-    void setFigW(float w) {
+    void setFigW(double  w) {
         if (w > 0) {
             width = w;
         }
@@ -52,7 +52,7 @@ public:
     }
 
     // Метод заполнения высоты
-    void setFigH(float h) { 
+    void setFigH(double  h) {
         if (h >= 0) {
             height = h;
         }
@@ -62,7 +62,7 @@ public:
     }
 
     // Метод заполнения длины
-    void setFigL(float l) { 
+    void setFigL(double  l) {
         if (l > 0) {
             length = l;
         }
@@ -72,52 +72,37 @@ public:
     }
 
     // Метод вывода ширины
-    float Getwidth() const {
+    double  Getwidth() const {
         return width;
     }
 
     // Метод вывода высоты
-    float Getheight() const {
+    double  Getheight() const {
         return height;
     }
 
     // Метод вывода длины
-    float Getlength() const {
+    double  Getlength() const {
         return length;
     }
 
     // Метод нахождения периметра прямоугольника
-    float GetTwod_Perimeter() const { // const - объект не изменяется
+    double  GetTwod_Perimeter() const { // const - объект не изменяется
         return (length + width) * 2;
     }
 
     // Метод нахождения площади прямоугольника
-    float GetTwod_Area() const {
+    double  GetTwod_Area() const {
         return length * width;
     }
 
     // Метод нахождения площади параллелепипеда 
-    float GetTreed_Perimeter() const {
+    double  GetTreed_Perimeter() const {
         return 4 * (length + width + height);
     }
 
     // Метод нахождения объёма параллелепипеда
-    float GetTreed_Volume() const {
-        return width * length * height;
-    }
-
-    // Метод вывода ответа на экран
-    void printclass() {
-        Print(this);
-    }
-
-    // Метод записи ответа в файл
-    void SaveFileSolutionClass() {
-        SaveFileSolution(this);
-    }
-
-    // Метод записи элементов класса в файл
-    void SaveFileElementsClass() {
-        SaveFileElements(this);
+    double  GetTreed_Volume() const {
+        return (width * length * height);
     }
 };
